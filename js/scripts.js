@@ -5,7 +5,7 @@ function Pizza(pizzaSize, toppings) {
   this.pizzaCost = pizzaCost;
 };
 
-Pizza.prototype.sizeCost = function () {
+Pizza.prototype.sizeCost = function() {
   if (this.pizzaSize === "large") {
     this.pizzaCost += 16;
   } else if (this.pizzaSize === "medium") {
@@ -15,4 +15,14 @@ Pizza.prototype.sizeCost = function () {
   } else {
     this.pizzaCost += 0;
   }
+};
+
+Pizza.prototype.toppingsCost = function() {
+  var toppingCost = 0;
+  this.toppings.forEach(function (value) {
+    if (value === "pepperoni" || value === "sausage" || value === "ham") {
+      toppingCost += 1
+    }
+  });
+  this.pizzaCost += toppingCost
 };
