@@ -13,6 +13,12 @@ describe('Pizza', function() {
     var testPizza = new Pizza("large", ["pepperoni", "sausage", "ham"]);
     expect(testPizza.pizzaCost).to.eql(0);
   });
+
+  it("will check the size of the pizza and adjust the cost correctly", function() {
+    var testPizza = new Pizza("large", ["pepperoni", "sausage", "ham"]);
+    testPizza.sizeCost()
+    expect(testPizza.pizzaCost).to.eql(16);
+  })
 });
 
 
