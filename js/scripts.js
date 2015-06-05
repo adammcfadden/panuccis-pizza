@@ -74,3 +74,13 @@ Order.prototype.suggestTip = function (percent) {
 Order.prototype.roundedCost = function () {
   return (this.orderCost).toFixed(2)
 };
+
+$(function(){
+  $("#picture-scroller").click(function(){
+    $("div#picture-scroller").replaceWith('<div id="picture-scroller" class="col-md-4">' +
+                                     "<img src='img/seymor.jpg'/>" +
+                                   '</div>');
+  })
+
+
+});
