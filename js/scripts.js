@@ -1,8 +1,18 @@
-function Pizza(pizzaSize, toppings) {
+function Pizza() {
+  var pizzaSize = ""
   this.pizzaSize = pizzaSize;
+  var toppings = []
   this.toppings = toppings;
   var pizzaCost = 0;
   this.pizzaCost = pizzaCost;
+};
+
+Pizza.prototype.addTopping = function (topping) {
+  this.toppings.push(topping);
+}
+
+Pizza.prototype.setSize = function (pizzaSize) {
+  this.pizzaSize = pizzaSize;
 };
 
 Pizza.prototype.sizeCost = function() {
