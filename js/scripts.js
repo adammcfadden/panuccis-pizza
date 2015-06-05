@@ -76,20 +76,18 @@ Order.prototype.roundedCost = function () {
 };
 
 $(function(){
-  var selectedImage = ""
-  $("#picture-scroller").click(function(){
-    var i = Math.floor((Math.random() * 4) + 1);
-    if (i === 1) {
-      selectedImage = "<img src='img/Panuccipizza.png'/>"
-    } else if (i === 2) {
-      selectedImage = "<img src='img/seymor.jpg'/>"
-    } else if (i === 3) {
-      selectedImage = "<img src='img/PanucciInterior.jpg'/>"
-    } else if (i === 4) {
-      selectedImage = "<img src='img/Mr_Panucci-1-.jpg'/>"
-    }
-    $("div#picture-scroller").replaceWith('<div id="picture-scroller" class="col-md-4">' +
-                                     selectedImage +
-                                   '</div>');
+  $("#order-a-pizza-button").click(function() {
+    $("#order-form").slideDown("slow");
+    $("#order-a-pizza-button").slideUp("slow");
+  });
+
+  $("#add-this-pizza").click(function(event) {
+    event.preventDefault();
+
+    var inputSize = $("select#pizza-size").val()
+    var inputToppings = []
+    $("input:checked").each(function(){
+      inputToppings.push(($(this).val()));
+    });
   });
 });

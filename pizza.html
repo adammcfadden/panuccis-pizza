@@ -7,10 +7,10 @@
     <script src="js/scripts.js"></script>
   </head>
   <body>
-    <h1 class="page-header">Welcome to Panucci's!</h1>
-    <div id="below-header">
-
     <div class="container">
+      <div id="header">
+        <h1 class="page-header">Welcome to Panucci's!</h1>
+      </div>
       <div class="row" id="news-pictures">
         <div id="pizza-news" class="col-md-8">
           <h3>Pannuci's News</h3>
@@ -27,25 +27,60 @@
       </span>
       <div class="form-group" id="order-form">
         <form class="" action="index.html" method="post">
+          <label for="pizza-size">Select your size</label>
           <select class="form-control" name="pizza-size" id="pizza-size">
-            <option value='large'>large</option>
-            <option value='medium'>medium</option>
-            <option value='small'>small</option>
+            <option value='large'>Large</option>
+            <option value='medium'>Medium</option>
+            <option value='small'>Small</option>
           </select>
-
+          <div id="all-toppings">
+            <div class="row">
+              <div class="toppings col-sm-4">
+                <p>$0.50 toppings</p>
+                <input type="checkbox" value="green onion">Green Onion <br>
+                <input type="checkbox" value="green pepper">Green Pepper<br>
+                <input type="checkbox" value="spinach">Spinach<br>
+                <input type="checkbox" value="tomatoe">Tomatoe<br>
+                <input type="checkbox" value="pesto">Pesto<br>
+                <input type="checkbox" value="onion">Onion<br>
+              </div>
+              <div class="toppings col-sm-4">
+                <p>$1.00 toppings</p>
+                <input type="checkbox" value="sausage">Sausage<br>
+                <input type="checkbox" value="ham">Ham<br>
+                <input type="checkbox" value="hamburger">Hamburger<br>
+                <input type="checkbox" value="pepperoni">Pepperoni<br>
+                <input type="checkbox" value="red pepper">Red Pepper<br>
+              </div>
+              <div class="toppings col-sm-4">
+                <p>$1.50 toppings</p>
+                <input type="checkbox" value="avocado">Avocado<br>
+                <input type="checkbox" value="anchovies">Anchovies<br>
+                <input type="checkbox" value="bacon">Bacon<br>
+                <input type="checkbox" value="salami">Salami<br>
+                <input type="checkbox" value="extra cheese">Extra Cheese<br>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6" id="add-this-pizza">
+              <button class="btn pizza-button" id="add-this-pizza" type="submit">Add This Pizza</button>
+            </div>
+            <div class="col-sm-6" id="add-another-pizza">
+              <button class="btn pizza-button" id="add-another-pizza">Add Another Pizza</button>
+            </div>
+            <div class="col-sm-6">
+              <button class="btn pizza-button" id="place-order">Place Order</button>
+            </div>
+          </div>
         </form>
       </div>
       <div class="row">
         <div class="col-md-8" id="contact-info">
-
         </div>
         <div class="col-md-4" id="current-order">
-
         </div>
       </div>
-
-    </div>
-
     </div>
   </body>
 </html>
