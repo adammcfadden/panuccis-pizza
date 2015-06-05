@@ -23,13 +23,33 @@ describe('Pizza', function() {
     expect(testPizza.pizzaCost).to.equal(16);
   });
 
-  it("will check the size of the pizza and adjust the cost correctly", function() {
+  it("will check the size of the pizza and adjust the cost correctly, for $1.00 items", function() {
     var testPizza = new Pizza();
     testPizza.addTopping("ham")
     testPizza.addTopping("sausage")
     testPizza.addTopping("pepperoni")
     testPizza.toppingsCost();
     expect(testPizza.pizzaCost).to.equal(3);
+  });
+
+  it("will check the size of the pizza and adjust the cost correctly, including $0.50 items", function() {
+    var testPizza = new Pizza();
+    testPizza.addTopping("onion")
+    testPizza.addTopping("sausage")
+    testPizza.addTopping("pesto")
+    testPizza.addTopping("green onion")
+    testPizza.toppingsCost();
+    expect(testPizza.pizzaCost).to.equal(2.5);
+  });
+
+  it("will check the size of the pizza and adjust the cost correctly, including $1.50 items", function() {
+    var testPizza = new Pizza();
+    testPizza.addTopping("avocado")
+    testPizza.addTopping("salami")
+    testPizza.addTopping("ham")
+    testPizza.addTopping("green onion")
+    testPizza.toppingsCost();
+    expect(testPizza.pizzaCost).to.equal(4.5);
   });
 });
 

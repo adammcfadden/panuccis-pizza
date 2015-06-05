@@ -30,8 +30,15 @@ Pizza.prototype.sizeCost = function() {
 Pizza.prototype.toppingsCost = function() {
   var toppingCost = 0;
   this.toppings.forEach(function (value) {
-    if (value === "pepperoni" || value === "sausage" || value === "ham") {
+    if (value === "pepperoni" || value === "sausage" || value === "ham" || value === "hamburger" || value === "red pepper") {
       toppingCost += 1
+    }
+    if (value === "green onion" || value === "green pepper" || value === "spinach" || value === "tomatoe" || value === "pesto" || value === "onion") {
+      toppingCost += 0.50
+    }
+
+    if (value === "avocado" || value === "anchovies" || value === "extra cheese" || value === "bacon" || value === "salami") {
+      toppingCost += 1.50
     }
   });
   this.pizzaCost += toppingCost
