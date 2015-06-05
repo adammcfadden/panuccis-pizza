@@ -47,16 +47,30 @@ Pizza.prototype.toppingsCost = function() {
 function Order() {
   var pizzas = [];
   this.pizzas = pizzas;
+  var orderCost = 0;
+  this.orderCost = orderCost;
 }
 
 Order.prototype.addPizza = function (pizza) {
   this.pizzas.push(pizza);
 };
 
-Order.prototype.orderCost = function () {
-  var orderCost = 0
+Order.prototype.pizzaCost = function () {
+  var pizzaOrderCost = 0;
   this.pizzas.forEach(function (pizza) {
-    orderCost += pizza.pizzaCost;
+    pizzaOrderCost += pizza.pizzaCost;
   });
-  return orderCost
+  this.orderCost += pizzaOrderCost
+};
+
+Order.prototype.addDelivery = function () {
+  this.orderCost += 3;
+};
+
+Order.prototype.suggestTip = function (percent) {
+  return (this.orderCost * percent).toFixed(2)
+};
+
+Order.prototype.roundedCost = function () {
+  return (this.orderCost).toFixed(2)
 };

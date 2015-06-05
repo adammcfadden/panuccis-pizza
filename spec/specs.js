@@ -83,6 +83,65 @@ describe('Order', function() {
     var testOrder = new Order();
     testOrder.addPizza(testPizza);
     testOrder.addPizza(testPizza2);
-    expect(testOrder.orderCost()).to.equal(31)
+    testOrder.pizzaCost();
+    expect(testOrder.orderCost).to.equal(31)
+  });
+
+  it ('will add a delivery charge to the order', function() {
+    var testPizza = new Pizza();
+    testPizza.setSize("large");
+    testPizza.addTopping("ham")
+    testPizza.addTopping("pepperoni")
+    testPizza.toppingsCost();
+    testPizza.sizeCost();
+    var testPizza2 = new Pizza();
+    testPizza2.setSize("small");
+    testPizza2.addTopping("sausage")
+    testPizza2.toppingsCost();
+    testPizza2.sizeCost();
+    var testOrder = new Order();
+    testOrder.addPizza(testPizza);
+    testOrder.addPizza(testPizza2);
+    testOrder.pizzaCost();
+    testOrder.addDelivery();
+    expect(testOrder.orderCost).to.equal(34)
+  });
+
+  it ('will suggest a tip based on a selected percentage', function() {
+    var testPizza = new Pizza();
+    testPizza.setSize("large");
+    testPizza.addTopping("ham")
+    testPizza.addTopping("pepperoni")
+    testPizza.toppingsCost();
+    testPizza.sizeCost();
+    var testPizza2 = new Pizza();
+    testPizza2.setSize("small");
+    testPizza2.addTopping("sausage")
+    testPizza2.toppingsCost();
+    testPizza2.sizeCost();
+    var testOrder = new Order();
+    testOrder.addPizza(testPizza);
+    testOrder.addPizza(testPizza2);
+    testOrder.pizzaCost();
+    expect(testOrder.suggestTip(0.15)).to.equal("4.65")
+  });
+
+  it('will return an output cost as a string with two decimal places.', function () {
+    var testPizza = new Pizza();
+    testPizza.setSize("large");
+    testPizza.addTopping("ham")
+    testPizza.addTopping("pepperoni")
+    testPizza.toppingsCost();
+    testPizza.sizeCost();
+    var testPizza2 = new Pizza();
+    testPizza2.setSize("small");
+    testPizza2.addTopping("sausage")
+    testPizza2.toppingsCost();
+    testPizza2.sizeCost();
+    var testOrder = new Order();
+    testOrder.addPizza(testPizza);
+    testOrder.addPizza(testPizza2);
+    testOrder.pizzaCost();
+    expect(testOrder.roundedCost()).to.equal('31.00')
   });
 });
