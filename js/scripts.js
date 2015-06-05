@@ -1,7 +1,7 @@
 function Pizza() {
   var pizzaSize = ""
   this.pizzaSize = pizzaSize;
-  var toppings = []
+  var toppings = [];
   this.toppings = toppings;
   var pizzaCost = 0;
   this.pizzaCost = pizzaCost;
@@ -31,17 +31,17 @@ Pizza.prototype.toppingsCost = function() {
   var toppingCost = 0;
   this.toppings.forEach(function (value) {
     if (value === "pepperoni" || value === "sausage" || value === "ham" || value === "hamburger" || value === "red pepper") {
-      toppingCost += 1
+      toppingCost += 1;
     }
     if (value === "green onion" || value === "green pepper" || value === "spinach" || value === "tomatoe" || value === "pesto" || value === "onion") {
-      toppingCost += 0.50
+      toppingCost += 0.50;
     }
 
     if (value === "avocado" || value === "anchovies" || value === "extra cheese" || value === "bacon" || value === "salami") {
-      toppingCost += 1.50
+      toppingCost += 1.50;
     }
   });
-  this.pizzaCost += toppingCost
+  this.pizzaCost += toppingCost;
 };
 
 function Order() {
@@ -60,7 +60,7 @@ Order.prototype.pizzaCost = function () {
   this.pizzas.forEach(function (pizza) {
     pizzaOrderCost += pizza.pizzaCost;
   });
-  this.orderCost += pizzaOrderCost
+  this.orderCost += pizzaOrderCost;
 };
 
 Order.prototype.addDelivery = function () {
@@ -68,15 +68,18 @@ Order.prototype.addDelivery = function () {
 };
 
 Order.prototype.suggestTip = function (percent) {
-  return (this.orderCost * percent).toFixed(2)
+  return (this.orderCost * percent).toFixed(2);
 };
 
 Order.prototype.roundedCost = function () {
-  return (this.orderCost).toFixed(2)
+  return (this.orderCost).toFixed(2);
 };
 
 $(function(){
+    var order = new Order();
+    var orderCost = order.orderCost;
   $("#order-a-pizza-button").click(function() {
+
     $("#order-form").slideDown("slow");
     $("#order-a-pizza-button").slideUp("slow");
   });
@@ -85,9 +88,71 @@ $(function(){
     event.preventDefault();
 
     var inputSize = $("select#pizza-size").val()
-    var inputToppings = []
+    var inputToppings = [];
     $("input:checked").each(function(){
       inputToppings.push(($(this).val()));
     });
+    var pizza = new Pizza();
+    pizza.setSize(inputSize);
+    inputToppings.forEach(function(topping) {
+      pizza.addTopping(topping);
+    });
+    pizza.toppingsCost();
+    pizza.sizeCost();
+    order.addPizza(pizza);
+    $("#add-this-pizza").hide();
+    $("#add-another-pizza").show();
+    $("#place-order").show();
+  });
+
+  $("#add-another-pizza").click(function(event) {
+    event.preventDefault();
+
+
+    order.pizzaCost();
+    $("input:checkbox").removeAttr('checked');
+    $('select').prop('selectedIndex',0);
+    $("#add-this-pizza").show();
+    $("#add-another-pizza").hide();
+    $("#place-order").hide();
+  });
+
+  $("#place-order").click(function(event) {
+    event.preventDefault();
+
+    order.pizzaCost();
+    $("#order-form").slideUp("slow");
+    $("#delivery").show("slow");
+  });
+
+  $("#delivery-yes").click(function(event) {
+    event.preventDefault();
+
+    order.addDelivery();
+    $("#order-details-price").text("The total is: $" + order.roundedCost())
+    $("#order-details-delivery").text("Delivery: Yes - $3.00");
+    for (var i = 0; i < order.pizzas.length; i++) {
+      $("#order-details-pizza").append(order.pizzas[i].pizzaSize + " with " + order.pizzas[i].toppings.join(", ") + " - $" + order.pizzas[i].pizzaCost.toFixed(2) + ".<br>")
+    }
+
+    $("#order-details").slideDown("slow");
+    $("#delivery").slideUp("slow");
+  });
+
+  $("#delivery-no").click(function(event) {
+    event.preventDefault();
+    $("#order-details-price").text("The total is: $" + order.roundedCost());
+    $("#order-details-delivery").text("Delivery: No");
+    for (var i = 0; i < order.pizzas.length; i++) {
+      $("#order-details-pizza").append(order.pizzas[i].pizzaSize + " with " + order.pizzas[i].toppings.join(", ") + " - $" + order.pizzas[i].pizzaCost.toFixed(2) + ".<br>")
+    }
+
+
+    $("#order-details").slideDown("slow");
+    $("#delivery").slideUp("slow");
+  });
+
+  $(".page-header").click(function() {
+    location.reload();
   });
 });

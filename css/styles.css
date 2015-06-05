@@ -1,3 +1,10 @@
+body {
+  background-color: lightgrey;
+  color: white;
+  text-align: center;
+  font-family: "Lucida Console", Monaco, monospace	;
+}
+
 #order-a-pizza-button {
   width: 100%;
   height: 50px;
@@ -13,18 +20,19 @@
 }
 
 .pizza-button {
-  width: 50%;
+  width: 70%;
   height: 50px;
   font-size: 1em;
   background-color:white;
   color:  #AC0701;
 }
+
 .pizza-button:hover {
   opacity: 0.4;
 }
 
-#add-another-pizza{
-  display: none;  
+#add-another-pizza, #place-order, #delivery, #order-details{
+  display: none;
 }
 
 #order-form {
@@ -40,15 +48,32 @@
 
 .page-header {
   margin-bottom: 0;
+  font-size: 60px;
 }
 
-body {
-  background-color: lightgrey;
-  color: white;
-  text-align: center;
+.page-header:hover {
+  cursor: pointer;
+  opacity: 0.4;
 }
 
-#news-pictures {
+
+#delivery {
+  margin: 20px;
+  width: 100%;
+  background-color: #AC0701;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#order-details {
+  margin: 20px;
+  width: 100%;
+  background-color: #AC0701;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+#news-pictures  {
   height: 300px;
   margin: 20px;
   width: 100%;
@@ -82,9 +107,3 @@ img {
 #all-toppings {
   padding: 30px;
 }
-
-
-/*img:hover {
-  cursor: pointer;
-  opacity: 0.4;
-}*/
