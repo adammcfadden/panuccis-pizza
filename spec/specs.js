@@ -47,4 +47,22 @@ describe('Order', function() {
     testOrder.addPizza(testPizza2);
     expect(testOrder.pizzas).to.eql([testPizza, testPizza2]);
   });
+
+  it('will return the cost of an entire order', function() {
+    var testPizza = new Pizza();
+    testPizza.setSize("large");
+    testPizza.addTopping("ham")
+    testPizza.addTopping("pepperoni")
+    testPizza.toppingsCost();
+    testPizza.sizeCost();
+    var testPizza2 = new Pizza();
+    testPizza2.setSize("small");
+    testPizza2.addTopping("sausage")
+    testPizza2.toppingsCost();
+    testPizza2.sizeCost();
+    var testOrder = new Order();
+    testOrder.addPizza(testPizza);
+    testOrder.addPizza(testPizza2);
+    expect(testOrder.orderCost()).to.equal(31)
+  });
 });

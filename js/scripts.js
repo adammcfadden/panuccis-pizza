@@ -45,3 +45,11 @@ function Order() {
 Order.prototype.addPizza = function (pizza) {
   this.pizzas.push(pizza);
 };
+
+Order.prototype.orderCost = function () {
+  var orderCost = 0
+  this.pizzas.forEach(function (pizza) {
+    orderCost += pizza.pizzaCost;
+  });
+  return orderCost
+};
