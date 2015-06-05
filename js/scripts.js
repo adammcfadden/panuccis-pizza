@@ -36,3 +36,12 @@ Pizza.prototype.toppingsCost = function() {
   });
   this.pizzaCost += toppingCost
 };
+
+function Order() {
+  var pizzas = [];
+  this.pizzas = pizzas;
+}
+
+Order.prototype.addPizza = function (pizza) {
+  this.pizzas.push(pizza);
+};

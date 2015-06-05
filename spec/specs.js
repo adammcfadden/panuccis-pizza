@@ -33,10 +33,18 @@ describe('Pizza', function() {
   });
 });
 
-
-// describe('Order', function() {
-//   it('will store all pizza objects', function() {
-//     var testPizza = new Pizza();
-//
-//   });
-// });
+describe('Order', function() {
+  it('will store all pizza objects', function() {
+    var testPizza = new Pizza();
+    testPizza.setSize("large");
+    testPizza.addTopping("ham")
+    testPizza.addTopping("pepperoni")
+    var testPizza2 = new Pizza();
+    testPizza2.setSize("small");
+    testPizza2.addTopping("sausage")
+    var testOrder = new Order();
+    testOrder.addPizza(testPizza);
+    testOrder.addPizza(testPizza2);
+    expect(testOrder.pizzas).to.eql([testPizza, testPizza2]);
+  });
+});
